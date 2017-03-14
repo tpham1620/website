@@ -186,13 +186,19 @@ a:visited {
 
 @media (max-width:1200px) {
     #aboutus .box {
-        width: 700px;
+        width: 100%;
+    }
+}
+
+@media (max-width:480px) {
+    #aboutus .box {
+	width: 400px;
     }
 }
 
 @media (max-width:750px) {
     #aboutus .box {
-        width: 400px;
+        width: 700px;
     }
 }
 
