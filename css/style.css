@@ -181,7 +181,7 @@ a:visited {
     background: rgba(255,255,255,0.8);
     padding: 10px 40px;
     margin: 0 auto;
-    width: 1200px;
+    width: 100%;
 }
 
 @media (max-width:1200px) {
@@ -224,7 +224,7 @@ a:visited {
     float: left;
     margin-right: 30px;
     margin-left: 20px;
-    height: 325px;
+    height: 375px;
 }
 
 
@@ -241,7 +241,7 @@ a:visited {
     background: rgba(255,255,255,0.8);
     padding: 10px 40px;
     margin: 0 auto;
-    width: 1200px;
+    width: 100%;
 }
 
 @media (max-width:1200px) {
@@ -323,47 +323,6 @@ a:visited {
     color: #000;
 }
 
-/* Promotions */
-
-#promotions {
-    color: #000;
-    padding-bottom: 100px;
-    padding-top: 60px;
-    text-align: center;
-}
-
-#promotions .box {
-    background: rgba(255,255,255,0.8);
-    padding: 10px 40px;
-    margin: 0 auto;
-    width: 1200px;
-}
-
-@media (max-width:1200px) {
-    #promotions .box {
-        width: 700px;
-    }
-}
-
-@media (max-width:750px) {
-    #promotions .box {
-        width: 400px;
-    }
-}
-
-#promotions h2 {
-    margin-top: 40px;
-    margin-bottom: 60px;
-    font-family: myriad pro;
-    font-size: 60px;
-    color: rgb(17, 43, 74);
-}
-
-#promotions .promoimage {
-    height: 210px;
-    margin: 0 auto 20px;
-}
-
 /* Contact */
 
 #contact {
@@ -377,7 +336,7 @@ a:visited {
     background: rgba(255,255,255,0.8);
     padding: 10px 40px;
     margin: 0 auto;
-    width: 1200px;
+    width: 100%px;
 }
 
 @media (max-width:1200px) {
@@ -477,7 +436,7 @@ a:visited {
     background: rgba(255,255,255,0.8);
     padding: 10px 40px;
     margin: 0 auto;
-    width: 1200px;
+    width: 100%;
 }
 
 @media (max-width:1200px) {
@@ -526,7 +485,6 @@ a:visited {
     font-size: 14px;
     color: #fff;
     /*background-color: #000;*/
-    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
