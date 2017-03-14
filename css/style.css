@@ -28,7 +28,7 @@ a:visited {
 .header {
     padding-bottom: 20px;
     padding-top: 140px;
-    max-width: 1200px;
+    width:100%
     margin: 0 auto;
 }
 
