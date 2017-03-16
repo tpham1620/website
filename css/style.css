@@ -28,7 +28,7 @@ a:visited {
 .header {
     padding-bottom: 20px;
     padding-top: 140px;
-    width:100%
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -49,21 +49,21 @@ a:visited {
 /* Homepage Images */
 
 .content {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
-/*@media (max-width:768px) {
+@media (max-width:768px) {
     .content {
-        width:750px;
+        max-width:750px;
     }
 }
 
 @media (max-width:700px) {
     .content {
-        width:650px;
+        max-width:650px;
     }
-}*/
+}
 
 .img-overlay {
     bottom: 0;
@@ -184,23 +184,18 @@ a:visited {
     width: 100%;
 }
 
-@media (max-width:1200px) {
+/*@media (max-width:1200px) {
     #aboutus .box {
-        width: 100%;
-    }
-}
-
-@media (max-width:480px) {
-    #aboutus .box {
-	width: 400px;
+        max-width: 700px;
     }
 }
 
 @media (max-width:750px) {
     #aboutus .box {
-        width: 700px;
+        max-width: 400px;
     }
 }
+*/
 
 #aboutus p {
     padding-top: 20px;
@@ -250,16 +245,109 @@ a:visited {
     width: 100%;
 }
 
-@media (max-width:1200px) {
+/*@media (max-width:1200px) {
     #services .box {
-        width: 700px;
+        max-width: 700px;
     }
 }
 
 @media (max-width:750px) {
     #services .box {
-        width: 400px;
+        max-width: 400px;
     }
+}
+*/
+.content {
+    margin: 80px 0 0 0;
+}
+
+.content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    padding: 0 0 19px 18px;
+    margin: 17px 15px 12px 2px;
+    letter-spacing: -0.3px;
+}
+
+
+.content .navi {
+    /*width: 235px;*/
+    border-right: 1px solid #dbe2e2;
+    list-style: none;
+    padding-left: 0;
+}
+
+.content li {
+    margin: 35px 0;
+    position: relative;
+    padding: 0;
+}
+
+.content .navi a {
+    color: #737373;
+    font-size: 20px;
+    text-decoration: none;
+    display: block;
+    line-height: 20px;
+}
+
+.content .navi li.active a,
+.content .navi a:hover {
+    border-right: 11px solid #fff;
+    background: none;
+    margin-right: -6px;
+    color: #fff;
+}
+
+.content .big-briefcase p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #fff;
+    letter-spacing: -0.2px;
+    width: 560px;
+}
+
+.content .big-briefcase li {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #4f4f4f;
+    letter-spacing: -0.2px;
+}
+
+.content .big-briefcase .briefcase-text {
+    padding: 40px 0 0 0;
+}
+
+.content .tab-pane {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+}
+
+.content .big-briefcase a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.content .big-briefcase a:hover {
+    color: #000;
+}
+
+.content .big-briefcase h3 {
+    font-size: 24px;
+    color: #636c6c;
+    margin-top: 40px;
+    font-weight: 700;
+    padding: 0 50px;
+    letter-spacing: -0.2px;
+}
+
+.content .big-briefcase ol ol {
+    list-style-type: lower-alpha;
 }
 
 #services h2 {
@@ -290,18 +378,54 @@ a:visited {
     color: rgb(17, 43, 74);
 }
 
+.examples .btn {
+    color: #444;
+
+}
+
+.examples .btn:hover {
+    color: #fff;
+    background-color: #000;
+}
+
+.tabpanel .tab-pane .class {
+  text-align: left;
+  position: relative;
+}
+
+.price {
+  float:right;
+  padding-right: 40px;
+}
+
+#services img {
+    width:700px;
+    height:250px;
+}
 
 @media (max-width: 1200px) {
     #services .examples {
         margin-bottom: 20px;
+    }
+    #services .examples .servicename {
+	font-size:25px;
+    }
+    #services .examples .price {
+	font-size:25px;
     }
 }
 
 @media (max-width: 992px) {
     #services .examples {
         margin-bottom:5px;
-        margin-left: 140px;
+        margin-left: 100px;
         padding-right:0px;
+    }
+    #services .examples .servicename {
+	font-size:20px;
+    }
+    #services .examples .price {
+	font-size:20px;
     }
 }
 
@@ -311,7 +435,16 @@ a:visited {
         margin-left:20px;
     }
     .price {
-        padding-right:15px;
+        padding-left:30px;
+    }
+    #services .examples .servicename {
+	font-size:15px;
+    }
+    #services .examples .price {
+	font-size:15px;
+    }
+    img {
+	max-width:100%
     }
 }
 
@@ -322,6 +455,9 @@ a:visited {
     }
     .price {
         padding-right:5px;
+    }
+    img {
+	max-width:100%
     }
 }
 
@@ -347,13 +483,13 @@ a:visited {
 
 @media (max-width:1200px) {
     #contact .box {
-        width: 700px;
+        max-width: 700px;
     }
 }
 
 @media (max-width:750px) {
     #contact .box {
-        width: 400px;
+        max-width: 400px;
     }
 }
 
@@ -444,20 +580,19 @@ a:visited {
     margin: 0 auto;
     width: 100%;
 }
-
+/*
 @media (max-width:1200px) {
     #gallery .box {
-        width: 700px;
+        max-width: 700px;
     }
 }
 
 @media (max-width:750px) {
     #gallery .box {
-        width: 400px;
+        max-width: 400px;
     }
 }
-
-
+*/
 #gallery2 {
     padding-top: 200px;
 }
