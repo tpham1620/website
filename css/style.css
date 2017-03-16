@@ -26,8 +26,8 @@ a:visited {
 /* Title */
 
 .header {
-    padding-bottom: 20px;
-    padding-top: 140px;
+    padding-bottom: 0px;
+    padding-top: 60px;
     max-width: 100%;
     margin: 0 auto;
 }
@@ -41,9 +41,6 @@ a:visited {
     font-size: 4em;
     margin-top: 0;
     text-transform: uppercase;
-}
-
-.header .container .address {
 }
 
 /* Homepage Images */
@@ -96,10 +93,6 @@ a:visited {
 
 .green-overlay {
     background: rgba(151,191,139,0.8);
-}
-
-.hp-images a {
-    /*display: block;*/
 }
 
 .hp-images img {
@@ -172,14 +165,14 @@ a:visited {
 /* About */
 
 #aboutus {
-    padding-bottom: 100px;
-    padding-top: 60px;
+    padding-bottom: 0px;
+    padding-top: 20px;
     text-align: center;
 }
 
 #aboutus .box {
     background: rgba(255,255,255,0.8);
-    padding: 10px 40px;
+    padding: 10px 10px;
     margin: 0 auto;
     width: 100%;
 }
@@ -202,6 +195,7 @@ a:visited {
     padding-bottom: 30px;
     text-align: left;
     margin-right: 20px;
+    margin-left: 10px;
     font-family: ;
     font-size: ;
     color: #000;
@@ -228,19 +222,31 @@ a:visited {
     height: 375px;
 }
 
+@media (max-width:480px) {
+    #aboutus h2 {
+       font-size:30px;
+    }
+    #aboutus h3 {
+	font-size:20px;
+    }
+    #aboutus .sideimg {
+	margin-right:5px;
+	margin-left:15px;
+	height:250px;
+    }
+}
+
 
 /* Services */
 
 #services {
-    padding-bottom: 100px;
-    padding-top: 60px;
     color: #000;
     text-align: center;
 }
 
 #services .box {
     background: rgba(255,255,255,0.8);
-    padding: 10px 40px;
+    padding: 10px 10px;
     margin: 0 auto;
     width: 100%;
 }
@@ -258,7 +264,7 @@ a:visited {
 }
 */
 .content {
-    margin: 80px 0 0 0;
+    margin: 20px 0 0 0;
 }
 
 .content h2 {
@@ -266,11 +272,9 @@ a:visited {
     font-weight: 700;
     color: #fff;
     text-align: center;
-    padding: 0 0 19px 18px;
-    margin: 17px 15px 12px 2px;
+    margin: 15px 15px 12px 12px;
     letter-spacing: -0.3px;
 }
-
 
 .content .navi {
     /*width: 235px;*/
@@ -283,6 +287,12 @@ a:visited {
     margin: 35px 0;
     position: relative;
     padding: 0;
+}
+
+@media (max-width:992px) {
+    .content li {
+	margin: 20px 0;
+    }
 }
 
 .content .navi a {
@@ -318,13 +328,7 @@ a:visited {
     letter-spacing: -0.2px;
 }
 
-.content .big-briefcase .briefcase-text {
-    padding: 40px 0 0 0;
-}
-
 .content .tab-pane {
-    overflow-x: hidden;
-    overflow-y: auto;
     height: auto;
 }
 
@@ -342,8 +346,8 @@ a:visited {
     color: #636c6c;
     margin-top: 40px;
     font-weight: 700;
-    padding: 0 50px;
-    letter-spacing: -0.2px;
+    padding: 0 0px;
+    letter-spacing: 0px;
 }
 
 .content .big-briefcase ol ol {
@@ -356,6 +360,12 @@ a:visited {
     color: rgb(17, 43, 74);
 }
 
+@media (max-width:480px) {
+    #services h2 {
+	font-size:40px;
+    }
+}
+
 #services .navi {
     font-family: myriad pro;
     font-size: 30px;
@@ -363,7 +373,9 @@ a:visited {
 }
 
 #services .examples {
-    text-align: left
+    margin-bottom: 20px;
+    margin-left: 10px;
+    text-align: left;
 }
 
 #services .examples .servicename {
@@ -399,6 +411,7 @@ a:visited {
 }
 
 #services img {
+    padding-bottom:20px;
     width:700px;
     height:250px;
 }
@@ -413,12 +426,15 @@ a:visited {
     #services .examples .price {
 	font-size:25px;
     }
+    img {
+	max-width:100%
+    }
 }
 
 @media (max-width: 992px) {
     #services .examples {
-        margin-bottom:5px;
-        margin-left: 100px;
+        margin-bottom:15px;
+        margin-left: 30px;
         padding-right:0px;
     }
     #services .examples .servicename {
@@ -427,11 +443,14 @@ a:visited {
     #services .examples .price {
 	font-size:20px;
     }
+    img {
+	max-width:100%;
+    }
 }
 
 @media (max-width: 768px) {
     #services .examples {
-        margin-bottom:20px;
+        margin-bottom:10px;
         margin-left:20px;
     }
     .price {
@@ -444,20 +463,27 @@ a:visited {
 	font-size:15px;
     }
     img {
-	max-width:100%
+	max-width:100%;	
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     #services .examples {
-        margin-bottom:0px;
+        margin-bottom:5px;
         margin-left:10px;
     }
     .price {
         padding-right:5px;
     }
+    #services .examples .servicename {
+	font-size:12px;
+    }
+    #services .examples .price {
+	font-size:12px;
+    }
     img {
-	max-width:100%
+	max-width:100%;
+	max-height:150px;
     }
 }
 
@@ -471,16 +497,17 @@ a:visited {
     color: #000;
     text-align: center;
     padding-bottom: 100px;
-    padding-top: 60px;
+    padding-top: 20px;
 }
 
 #contact .box {
     background: rgba(255,255,255,0.8);
-    padding: 10px 40px;
+    padding: 10px 10px;
     margin: 0 auto;
     width: 100%px;
 }
 
+/*
 @media (max-width:1200px) {
     #contact .box {
         max-width: 700px;
@@ -492,6 +519,7 @@ a:visited {
         max-width: 400px;
     }
 }
+*/
 
 #contact h2 {
     font-family: myriad pro;
@@ -499,61 +527,77 @@ a:visited {
     color: rgb(17, 43, 74);
 }
 
+
 #contact .map {
     color: #000;
+    margin: auto;
 }
 
+#contact .map .mapbox{
+    margin:auto;
+    height:300px;
+    width:900px;
+    overflow:hidden;
+}
+
+#gmap_canvas {
+    overflow:hidden; 
+    height:280px;
+    width:900px;
+    margin:auto;
+}
 @media (max-width:1200px) {
     #contact .map {
-        width: 620px;
+        width: 720px;
     }
 
-    #contact .map > div {
-        width: 620px !important;
+    #contact .map .mapbox {
+        width: 720px;
     }
 
-    #contact .map > div #gmap_convas {
-        width: 620px !important;
+    #gmap_canvas {    
+        width:720px;
+    }
+}
+
+@media (max-width:992px) {
+    #contact .map {
+        width: 650px;
+    }
+
+    #contact .map .mapbox {
+        width: 650px;
+    }
+
+    #gmap_canvas {    
+        width:650px;
     }
 }
 
 @media (max-width:750px) {
     #contact .map {
-        width: 320px;
+        width: 100%;
     }
 
-    #contact .map > div {
-        width: 320px !important;
+    #contact .map .mapbox {
+        width: 100%;
+	height:250px;
     }
 
-    #contact .map > div #gmap_convas {
-        width: 320px !important;
+    #gmap_convas {
+        width: 100%;
+	height:250px;
+    }
+    
+    #contact h2 {
+	font-size:40px;
     }
 }
 
-
-#contact .map > div {
-    margin: 0 auto;
-}
-
-#contact .contacttext {
-    font-family: ;
-    font-size: ;
-    color: ;
-}
-
-#contact .box .contacttext h3 {
-    font-family: ;
-    font-size: ;
-    color: ;
-}
-
-#contact .box .contacttext p {
-    text-align: center;
-    padding-bottom: 40px;
-    font-family: ;
-    font-size: ;
-    color: ;
+@media (max-width:480px) {
+    #contact h2 {
+	font-size:30px;
+    }
 }
 
 /* Gallery */
