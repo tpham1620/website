@@ -513,7 +513,37 @@ a:visited {
 }
 
 /* Gallery */
-
+#gallery .grid{
+  padding: 0px;
+  max-width: 90%;
+  list-style: none;
+  margin-top: 20px;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display: flex;
+  -ms-flex-flow:row wrap;
+      flex-flow:row wrap;
+  -ms-flex-pack:distribute;
+      justify-content:space-around;
+  -webkit-box-align:start;
+      -ms-flex-align:start;
+          align-items:flex-start;
+  margin:0 auto; 
+}
+#expergalleryience .grid li{
+  margin: 20px;
+  max-width: 600px;
+}
+@media(min-width:1023px){
+  #gallery .grid li{
+    max-width: 420px;
+  }
+}
+#gallery img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 #gallery h3 {
     margin-top: 20px;
     margin-bottom: 20px;
