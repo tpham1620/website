@@ -530,7 +530,7 @@ a:visited {
           align-items:flex-start;
   margin:0 auto; 
 }
-#expergalleryience .grid li{
+#gallery .grid li{
   margin: 20px;
   max-width: 600px;
 }
@@ -567,12 +567,8 @@ a:visited {
     width: 100%;
 }
 
-#gallery2 {
-    padding-top: 200px;
-}
-
 #gallery-items {
-	max-height: 577px;
+	max-height: 600px;
 	margin: 10px;
 	overflow: scroll;
 	overflow-y: scroll;
