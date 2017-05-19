@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<title>JC Nails & Spa</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/8e78ebf2dd.js"></script>
+    <script>
+        $("document").ready(function () {
+            $("#about-menu").click(function () {
+                $("#display").load("about.html");
+            });
+            $("#service-menu").click(function () {
+                $("#display").load("services.html");
+            });
+            $("#gallery-menu").click(function () {
+                $("#display").load("gallery.html");
+                getImgs("72157681144808022");
+            });
+            $("#contact-menu").click(function () {
+                $("#display").load("contact.html");
+            });
+        });
+
+        
+        function getImgs(setId) {
+        var URL =
+            "https://api.flickr.com/services/rest/" + // Wake up the Flickr API gods.
+            "?method=flickr.photosets.getPhotos" + // Get photo from a photoset. http://www.flickr.com/services/api/flickr.photosets.getPhotos.htm
+            "&api_key=1ced4a1ca9436b4de78558cd882b8ccf" + // API key. Get one here: http://www.flickr.com/services/apps/create/apply/
+            "&photoset_id=" +
+            setId + // The set ID.
+            //"&privacy_filter=1"; // 1 signifies all public photos.
+            "&per_page=20"; // For the sake of this example I am limiting it to 20 photos.
+        //"&format=json&nojsoncallback=1";  // Er, nothing much to explain here.
+
+        // See the API in action here: http://www.flickr.com/services/api/explore/flickr.photosets.getPhotos
+        $.ajax({
+            url: URL,
+            dataType: "xml",
+            success: function(data) {
+            var photos = data.getElementsByTagName("photo");
+            var imgs_html = "";
+            $.each(photos, function(i, item) {
+                // Creating the image URL. Info: http://www.flickr.com/services/api/misc.urls.html
+                var img_src =
+                "https://farm" +
+                item.getAttribute("farm") +
+                ".staticflickr.com/" +
+                item.getAttribute("server") +
+                "/" +
+                item.getAttribute("id") +
+                "_" +
+                item.getAttribute("secret") +
+                "_z.jpg";
+                imgs_html +=
+                "<li><img class='thumbnail' src='" +
+                img_src +
+                "' alt='" +
+                item.id +
+                "'></li>";
+            });
+            $(imgs_html).appendTo("#flickr-images");
+            }
+        });
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-9 text-sm-left">
+                        <a href="index.html">
+                            <img class="img-responsive col-xs-12 text-xs-center" src="img/logo.png">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 text-sm-right col-xs-12 text-xs-center">
+                        <p>13105 Meridian East, Suite 104<br>Puyallup, WA 98371<br>(253) 845 5561</p>
+                        <h4>Business Hours</h4>
+                        <p>Mon - Sat 9:00am-7:00pm<br>Sunday closed</p>
+                        <button class="btn btn-primary" id="login">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="image-row clearfix">
+                <div class=" hp-images col-sm-3 col-xs-3">
+                    <div>
+                        <button id="about-menu" class="icon">
+                            <img src="img/about.jpg">
+                            <div class="img-overlay red-overlay"></div>
+                            <p>About Us</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="hp-images col-sm-3 col-xs-3">
+                    <div>
+                        <button id="service-menu" class="icon">
+                            <img src="img/services.jpg">
+                            <div class="img-overlay pink-overlay"></div>
+                            <p>Services</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="hp-images col-sm-3 col-xs-3">
+                    <div>
+                        <button id="gallery-menu" class="icon">
+                            <img src="img/gallery.jpg">
+                            <div class="img-overlay green-overlay"></div>
+                            <p>Gallery</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="hp-images col-sm-3 col-xs-3">
+                    <div>
+                        <button id="contact-menu" class="icon">
+                            <img src="img/contact.jpg">
+                            <div class="img-overlay orange-overlay"></div>
+                            <p>Contact Us</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="display" class="">
+            <!--Display panel for menu section -->
+        </div>
+        <div class="footer">
+            <div class="container-fluid text-center">
+                Copyright &copy; JC Nails & Spa LLC. Designed by Tan Pham &#124; Check out our:
+                <a class="social" href="https://www.facebook.com/JC-Nails-Spa-240427656013741/" target="_blank">
+                    <i class="fa fa-facebook-square" aria-hidden="true" style="color:blue"> facebook</i>
+                </a>
+                <a class="social" href="https://www.yelp.com/biz/jc-nails-and-spa-puyallup" target="_blank">
+                    <i class="fa fa-yelp" aria-hidden="true" style="color:orange"> yelp</i>
+                </a>
+                <a class="btop glyphicon glyphicon-chevron-up" href="#" title="Back To Top"></a>
+            </div>
+        </div>       
+    </div>
+</body>
+
+</html>
