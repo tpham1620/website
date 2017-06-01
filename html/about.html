@@ -1,0 +1,61 @@
+<div id="aboutus" class="container-fluid">
+    <div class="box">
+        <h3>Welcome to</h3>
+        <h2>
+            <strong>JC Nails & Spa</strong>
+        </h2>
+        <div class="row">
+        <div class="col-md-4 col-xs-12">
+        <img src="img/aboutus.jpg" class="sideimg">
+        </div>
+        <div class="col-md-8 col-xs-12">
+        <div id="about-panel">
+            <p id="about-description">
+                <!-- Description is loaded from data/about_des.txt -->
+            </p>
+            <button id="about-btn-edit" class="btn btn-info">Edit</button>
+        </div>
+        <div id="about-edit-panel">
+            <textarea id="about-edit-text" required></textarea>
+            <button id="about-btn-save" class="btn btn-info">Save</button>
+            <button id="about-btn-cancel" class="btn btn-info">Cancel</button>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$("document").ready(function () {  
+    $("#about-description").load("data/about_des.txt"); 
+    $("#about-edit-panel").hide();
+    $("#about-btn-edit").hide();
+    if(validAdmin){
+        $("#about-btn-edit").show();
+    }
+    $("#about-btn-edit").click(function(){
+        if(validAdmin){
+            $("#about-edit-panel").show();
+            $("#about-edit-text").val($("#about-description").html());
+            $("#about-panel").hide();
+        }
+    });
+    $("#about-btn-save").click(function(){
+         if(validAdmin){
+                var newText = $("#about-edit-text").val();
+                var url ="php/about_save.php";
+                $.post(url, {"newText": newText}).fail(function(jqXHR){
+                    alert(jqXHR.status +' '+jqXHR.statusText+ ' $.post failed!');
+                });    
+            $("#about-description").load("data/about_des.txt"); 
+            $("#about-edit-panel").hide();
+            $("#about-panel").show();
+        }
+    });
+    $("#about-btn-cancel").click(function(){
+        $("#display").load("html/about.html");
+    });
+});
+</script>
+    
+    

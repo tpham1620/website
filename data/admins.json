@@ -1,0 +1,22 @@
+{
+    "admins":[   
+        {
+            "first_name":"Tan",
+            "last_name":"Pham",
+            "email":"tanemail@gmail.com",
+            "password":"TanPassword" 
+        },
+        {
+            "first_name":"Quyen",
+            "last_name":"Pham",
+            "email":"quyenemail@gmail.com",
+            "password":"QuyenPassword" 
+        },
+        {
+            "first_name":"admin",
+            "last_name":"Pham",
+            "email":"a",
+            "password":"p"
+        }
+    ]
+}

@@ -3,7 +3,7 @@
 <title>JC Nails & Spa</title>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -12,67 +12,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/8e78ebf2dd.js"></script>
-    <script>
-        $("document").ready(function () {
-            $("#about-menu").click(function () {
-                $("#display").load("about.html");
-            });
-            $("#service-menu").click(function () {
-                $("#display").load("services.html");
-            });
-            $("#gallery-menu").click(function () {
-                $("#display").load("gallery.html");
-                getImgs("72157681144808022");
-            });
-            $("#contact-menu").click(function () {
-                $("#display").load("contact.html");
-            });
-        });
-
-        
-        function getImgs(setId) {
-        var URL =
-            "https://api.flickr.com/services/rest/" + // Wake up the Flickr API gods.
-            "?method=flickr.photosets.getPhotos" + // Get photo from a photoset. http://www.flickr.com/services/api/flickr.photosets.getPhotos.htm
-            "&api_key=1ced4a1ca9436b4de78558cd882b8ccf" + // API key. Get one here: http://www.flickr.com/services/apps/create/apply/
-            "&photoset_id=" +
-            setId + // The set ID.
-            //"&privacy_filter=1"; // 1 signifies all public photos.
-            "&per_page=20"; // For the sake of this example I am limiting it to 20 photos.
-        //"&format=json&nojsoncallback=1";  // Er, nothing much to explain here.
-
-        // See the API in action here: http://www.flickr.com/services/api/explore/flickr.photosets.getPhotos
-        $.ajax({
-            url: URL,
-            dataType: "xml",
-            success: function(data) {
-            var photos = data.getElementsByTagName("photo");
-            var imgs_html = "";
-            $.each(photos, function(i, item) {
-                // Creating the image URL. Info: http://www.flickr.com/services/api/misc.urls.html
-                var img_src =
-                "https://farm" +
-                item.getAttribute("farm") +
-                ".staticflickr.com/" +
-                item.getAttribute("server") +
-                "/" +
-                item.getAttribute("id") +
-                "_" +
-                item.getAttribute("secret") +
-                "_z.jpg";
-                imgs_html +=
-                "<li><img class='thumbnail' src='" +
-                img_src +
-                "' alt='" +
-                item.id +
-                "'></li>";
-            });
-            $(imgs_html).appendTo("#flickr-images");
-            }
-        });
-        }
-
-    </script>
+    <script>$.getScript("script/script.js")</script>
 </head>
 <body>
     <div class="container-fluid">
