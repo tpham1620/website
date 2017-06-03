@@ -6,7 +6,7 @@
                 <!-- Nav tabs -->
                 <ul class="navi" role="tablist">
                     <li role="presentation" class="active">
-                        <a href="#one" aria-controls="one" role="tab" data-toggle="tab">Nail Enhancements</a>
+                        <a href="#one" aria-controls="one" role="tab" data-toggle="tab" id="nails">Nail Enhancements</a>
                     </li>
                     <li role="presentation">
                         <a href="#two" aria-controls="two" role="tab" data-toggle="tab">Hand and Feet Spa</a>
@@ -27,6 +27,8 @@
                             <div>
                                 <img src="img/nails.jpg" alt="image"></img>
                             </div> 
+
+                            <!--
                             <div class="examples">
                                 <em class="servicename">ARCRYLIC FULLSET/FILL</em>
                                 <div class="price">$25/$15</div>
@@ -84,6 +86,8 @@
                                 <em class="servicename">NAILS REMOVAL</em>
                                 <div class="price">$10</div>
                             </div>
+
+                            -->
                         </div>
 
                         <div role="tabpanel" class="tab-pane" id="two">
@@ -238,3 +242,19 @@
         </div>          
     </div>
 </div>
+
+<script>
+$("document").ready(function () {
+    $("#nails").click(function(){
+        $.get("php/service_get_nails.php",function(data){
+            var jdata = $.parseJSON(data);
+            var html_list = "";
+            $.each(jdata, function(i, item){
+                html_list += "<div class='example'> <em class='servicename'>" + item.service_name 
+                + "</em> <div class='price'>" + item.price + "</div></div>";
+            })
+            $("#one").html(html_list);
+        })
+    });
+});
+</script>
