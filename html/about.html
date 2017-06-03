@@ -28,7 +28,8 @@
 <script>
 $("document").ready(function () {
     $.get("php/about_get_des.php",function(data){   
-        $("#about-description").html(data);    
+        var jdata = $.parseJSON(data);
+        $("#about-description").html(jdata[0].description);    
     });   
     $("#about-edit-panel").hide();
     $("#about-btn-edit").hide();
