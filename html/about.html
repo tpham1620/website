@@ -26,8 +26,11 @@
 </div>
 
 <script>
-$("document").ready(function () {  
-    $("#about-description").load("data/about_des.txt"); 
+$("document").ready(function () {
+    $.get("php/about_get_des.php",function(data){   
+        var jdata = $.parseJSON(data);  
+        $("#about-description").html(jdata[0].description);    
+    });   
     $("#about-edit-panel").hide();
     $("#about-btn-edit").hide();
     if(validAdmin){
@@ -47,7 +50,7 @@ $("document").ready(function () {
                 $.post(url, {"newText": newText}).fail(function(jqXHR){
                     alert(jqXHR.status +' '+jqXHR.statusText+ ' $.post failed!');
                 });    
-            $("#about-description").load("data/about_des.txt"); 
+            $("#about-description").html(newText);   
             $("#about-edit-panel").hide();
             $("#about-panel").show();
         }
@@ -56,6 +59,7 @@ $("document").ready(function () {
         $("#display").load("html/about.html");
     });
 });
+
 </script>
     
     

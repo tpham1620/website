@@ -7,11 +7,14 @@ try {
 		$conn = new PDO($dsn, $username, $password);
 		// set the PDO error mode to exception
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $description = $_POST["newText"];
-		$sql = "UPDATE `jcnailsspa`.`about_des` SET `description` = '$description' WHERE `id`=1";
-		$stmt = $conn->prepare($sql);
-		$stmt->execute();
-        echo "update successfully";
+		//$ID = isset($_GET['ID']) ? $_GET['ID'] : '';
+		
+		$sql = "SELECT * FROM jcnailsspa.about_des";
+		$query = $conn->query($sql);
+		$des_out = $query->fetchAll(PDO::FETCH_ASSOC);
+		if ($des_out) {	
+			echo json_encode($des_out);
+		}
 	}
 catch(PDOException $e)
     {
