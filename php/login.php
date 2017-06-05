@@ -7,13 +7,13 @@ try {
 		$conn = new PDO($dsn, $username, $password);
 		// set the PDO error mode to exception
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		
-		$sql = "SELECT * FROM `jcnailsspa`.`service_eyes` ORDER BY `id`";
-		$query = $conn->query($sql);
-		$des_out = $query->fetchAll(PDO::FETCH_ASSOC);
-		if ($des_out) {	
-			echo json_encode($des_out);
-		}
+        $email= $_POST["email"];
+        $pwd = $_POST["pwd"];
+        $sql = "SELECT * FROM `jcnailsspa`.`admin` WHERE `email` = '$email' AND `password` = '$pwd'";
+        $query = $conn->query($sql);
+        
+		$data_out = $query->fetchAll(PDO::FETCH_ASSOC);
+		echo json_encode($data_out);
 	}
 catch(PDOException $e)
     {

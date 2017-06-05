@@ -111,7 +111,7 @@ body {
 }
 
 .box {
-    background: rgba(255,255,255,0.8);
+    background: rgba(240,140,80,0.8);
     padding: 10px 10px;
     margin: 0 auto;
     width: 100%;
@@ -321,7 +321,10 @@ body {
     }
 }
 
-
+/* Edit-Service */
+#service-form{
+    color:black;
+}
 /* Contact */
 
 #contact {
@@ -438,7 +441,7 @@ body {
 #login-form{
     padding-bottom: 20px;
     padding-top: 20px;  
-    text-align: center;
+    color: black;
 }
 
 

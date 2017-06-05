@@ -62,23 +62,19 @@ function getImgs(setId) {
     });
 }
 function verifyAdmin(){
-        $.getJSON("data/admins.json", function(data){
-
-            var email = $("#email").val();
-            var password = $("#pwd").val();
+        $.post("php/login.php", {"email":$("#email").val(), "pwd":$("#pwd").val()}, function(data){
             var username = "";
-            var admins = data.admins;
-            $.each(admins, function(i,item){
-                if(item.email === email && item.password === password){
-                    validAdmin = true;
-                    username = item.first_name;
-                }
-            });
+            var jdata = $.parseJSON(data);
+            console.log(jdata);
+            if(jdata.length>0){
+                username = jdata[0].first_name;
+                validAdmin = true;
+            }
             if(validAdmin===true){
-            $("#welcome").html("Welcome " + username);
-            $("#sign-out").show();
-            $("#btn-login").hide();
-            $("#display").load("html/about.html");
+                $("#welcome").html("Welcome " + username);
+                $("#sign-out").show();
+                $("#btn-login").hide();
+                $("#display").load("html/about.html");
             }else{
                 alert("Your information is not correct.");
             }

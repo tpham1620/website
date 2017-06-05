@@ -17,6 +17,12 @@
             "last_name":"Pham",
             "email":"a",
             "password":"p"
+        },
+        {
+            "first_name": "any",
+            "last_name":"anymore",
+            "email":"email",
+            "password":"pass"
         }
     ]
 }

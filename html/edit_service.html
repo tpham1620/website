@@ -1,0 +1,67 @@
+<div id="login-form" class="container-fluid">
+    <div class="box">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Service Type:</label>
+                <div class="col-sm-10">
+                    <input type="radio" name="type" value="service_nails" checked> Nails &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp 
+                    <input type="radio" name="type" value="service_spa"> Spa &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+                    <input type="radio" name="type" value="service_wax"> Waxing &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp 
+                    <input type="radio" name="type" value="service_eyes"> Eyelashes
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Service Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="edit-service-name" required placeholder="Enter Service Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Price:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="edit-service-price" required placeholder="Enter Price">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-primary" id="service-btn-save">Save</button>
+                    <button type="button" class="btn btn-primary" id="service-btn-cancel">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="service-btn-delete">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $("document").ready(function () {
+        var selectedType = $("input[type='radio'][name='type']:checked").val();
+        var name = $("#edit-service-name").val();
+        var price = $("#edit-service-price").val();
+        $("#service-btn-cancel").click(function(){
+            $("#display").load("html/about.html");
+        });
+        $("#service-btn-save").click(function(){
+            selectedType = $("input[type='radio'][name='type']:checked").val();
+            name = $("#edit-service-name").val();
+            price = $("#edit-service-price").val();
+            $.post("php/edit_service_menu.php",{"type":selectedType,"name":name,"price":price},function(data){
+                alert(data);
+                $("#edit-service-name").val("");
+                $("#edit-service-price").val("");
+            });
+        });
+        $("#service-btn-delete").click(function(){
+            selectedType = $("input[type='radio'][name='type']:checked").val();
+            name = $("#edit-service-name").val();
+            price = $("#edit-service-price").val();
+            selectedType = $("input[type='radio'][name='type']:checked").val();
+            $.post("php/delete_service_menu.php",{"type":selectedType,"name":name,"price":price},function(data){
+                alert(data);
+                $("#edit-service-name").val("");
+                $("#edit-service-price").val("");
+            });
+        });
+
+    });
+</script>
