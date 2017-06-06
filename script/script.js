@@ -24,14 +24,9 @@ function getImgs(setId) {
     var URL =
         "https://api.flickr.com/services/rest/" + // Wake up the Flickr API gods.
         "?method=flickr.photosets.getPhotos" + // Get photo from a photoset. http://www.flickr.com/services/api/flickr.photosets.getPhotos.htm
-        "&api_key=1ced4a1ca9436b4de78558cd882b8ccf" + // API key. Get one here: http://www.flickr.com/services/apps/create/apply/
-        "&photoset_id=" +
-        setId + // The set ID.
-        //"&privacy_filter=1"; // 1 signifies all public photos.
-        "&per_page=20"; // For the sake of this example I am limiting it to 20 photos.
-    //"&format=json&nojsoncallback=1";  // Er, nothing much to explain here.
+        "&api_key=1ced4a1ca9436b4de78558cd882b8ccf" + // API key. 
+        "&photoset_id=" + setId; // The set ID.
 
-    // See the API in action here: http://www.flickr.com/services/api/explore/flickr.photosets.getPhotos
     $.ajax({
         url: URL,
         dataType: "xml",
