@@ -21,6 +21,7 @@
         </form>
     </div>
 </div>
+
 <script>
 $("document").ready(function () {   
     $("#login-submit").click(function(){
@@ -33,4 +34,23 @@ $("document").ready(function () {
         $("#display").load("html/about.html");
     });
 });
+
+function verifyAdmin(){
+        $.post("php/login.php", {"email":$("#email").val(), "pwd":$("#pwd").val()}, function(data){
+            var username = "";
+            var jdata = $.parseJSON(data);
+            if(jdata.length>0){
+                username = jdata[0].first_name;
+                validAdmin = true;
+            }
+            if(validAdmin===true){
+                $("#welcome").html("Welcome " + username);
+                $("#sign-out").show();
+                $("#btn-login").hide();
+                $("#display").load("html/about.html");
+            }else{
+                alert("Your information is not correct.");
+            }
+        });
+    }
 </script>

@@ -1,0 +1,229 @@
+<script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+<script>
+$("document").ready(function() {
+  /*
+Get current location latitude and longitude using navigator.geolocation*/
+  var theLat = "";
+  var theLong = "";
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      theLat = "" + position.coords.latitude;
+      theLong = "" + position.coords.longitude;
+
+      /*Using google GEOCODING API to get the city and country    */
+      var GEOCODING =
+        "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
+        theLat +
+        "%2C" +
+        theLong +
+        "&language=en";
+      $.getJSON(GEOCODING).done(function(location) {
+        $("#weather-location").html(
+          location.results[0].address_components[2].long_name +
+            ", " +
+            location.results[0].address_components[4].long_name +
+            ", " +
+            location.results[0].address_components[5].long_name
+        );
+      });
+
+      /*Using Dark Sky API to obtain the weather*/
+      $("#darksky-link").attr(
+        "href",
+        "https://darksky.net/forecast/" + theLat + "," + theLong + "/us12/en"
+      );
+      var DARKSKY =
+        "https://api.darksky.net/forecast/" +
+        "0c7a027ce129a3cf708e2eff4fcb2575/" +
+        theLat +
+        "," +
+        theLong;
+
+      $.ajax({
+        url: DARKSKY,
+        dataType: "jsonp",
+        success: function(data) {
+          var temp = data.currently.temperature;
+          var sum = data.currently.summary;
+          var icon = data.currently.icon
+          $("#weather-message").html(getMessage(temp, icon));
+          $("#weather-temp").html(temp);
+          $("#weather-des").html(sum);
+          getIcon(icon);
+          $("#c").hide();
+        }
+      });
+    });
+  } else {
+    $("#weather-location").html("Location service is not available.");
+  }
+
+  $("#f").on("click", function() {
+    var temp = parseFloat($("#weather-temp").html());
+    $("#weather-temp").html(((temp - 32) * 5 / 9).toFixed(2));
+    $("#c").show();
+    $("#f").hide();
+  });
+  $("#c").on("click", function() {
+    var temp = parseFloat($("#weather-temp").html());
+    $("#weather-temp").html((temp * 9 / 5 + 32).toFixed(2));
+    $("#c").hide();
+    $("#f").show();
+  });
+  $("#weather-date").html(getDate());
+});
+
+function getMessage(temp, icon){
+  var message = "";
+  var ftemp = parseFloat(temp);
+  var date = new Date();
+  if(temp>80){  //too hot day
+    message ="<strong>Happy " + dayOfWeek(date.getDay()) +"!! Too HOT outsite?</strong> It's a perfect time to get inside, relax, and chill" 
+              + " with our spa package (Pedi + Mani). We provide air-conditioning to keep you calm,"
+              + " and our pedicure product come with mint mask, cooling gel, and cool lotion will take you"
+              + " away from the heat and get you relax to your every muscles";
+  }else if(icon==="rain"){  //rainy day
+    message = "<strong>Happy " + dayOfWeek(date.getDay()) +"!! Find nowhere to hang out with friends and family on such a wet day? </strong>"
+              + " Our salon would be a perfect choice to make your day meaningful. Take away you stress and share"
+              + " your day with your loves one while getting a warm pedicure and relaxing massage."
+              + " We will help you forget about your stressful day and just enjoy your garthering time.";
+  }else if(icon==="cloudy" && temp > 50){ //cloudy day
+    message = "<strong>Happy " + dayOfWeek(date.getDay()) +"!! Can't find something to boost your mood up?</strong>"
+              +" Come to our place, relax and become beautiful afterward.";
+  }else if(icon="clear-day" && temp > 60){ //beautiful day
+    message = "<strong>Happy " + dayOfWeek(date.getDay()) +"!! Hello beautiful day!!</strong> It's even more perfect to treat yourself on such"
+              + " a beautiful day. You deserve to be beautiful too!";
+  }else if(temp < 50){  //cold day
+    message = "<strong>Happy " + dayOfWeek(date.getDay()) +"!! Can't stand the cold?</strong> Soaking your feet in a warm tank of water is all you"
+              + " need for this cold weather. Warm up your muscles with hot lotion, hot stones massge, and wrap up "
+              + "in hot towel. Then finally take a long deep relax in hot parafin wax.";
+  }else{    //defaul message
+    message = "<strong>Happy " + dayOfWeek(date.getDay()) +"!! Don't feel it's a special day?</strong> Make yourself special! Come and explore our salon and services."
+              + "We surely make you feel special at the time you walk out our door.";
+  }
+  return message;
+}
+
+function getIcon(icon) {
+  var ic = new Skycons({ color: "blue" });
+  switch (icon) {
+    case "clear-day":
+      ic.set("weather-icon", Skycons.CLEAR_DAY);
+      $(".weather-frame").css("background-image", "url('https://c1.staticflickr.com/5/4205/34888885280_b214106f38_b.jpg')");
+      break;
+    case "clear-night":
+      ic.set("weather-icon", Skycons.CLEAR_NIGHT);
+      $(".weather-frame").css("background-image", "url('https://c1.staticflickr.com/5/4280/34888883370_05b6521072_b.jpg')");
+      break;
+    case "rain":
+      ic.set("weather-icon", Skycons.RAIN);
+      $(".weather-frame").css("background-image", "url('https://c1.staticflickr.com/5/4239/34888882520_6dc48277a6_b.jpg')");
+      break;
+    case "snow":
+      ic.set("weather-icon", Skycons.SNOW);
+      $(".weather-frame").css("background-image", "url('https://c1.staticflickr.com/5/4200/34432474224_2104b53d02_b.jpg')");
+      break;
+    case "fleet":
+      ic.set("weather-icon", Skycons.FLEET);
+      $(".weather-frame").css("background-image", "url('https://c1.staticflickr.com/5/4230/35235069056_83beec0e0b_o.jpg')");
+      break;
+    case "wind":
+      ic.set("weather-icon", Skycons.WIND);
+      $(".weather-frame").css("background-image", "url('https://c1.staticflickr.com/5/4247/34888884690_0b114ff200_b.jpg')");
+      break;
+    case "fog":
+      ic.set("weather-icon", Skycons.FOG);
+      $(".weather-frame").css("background-image", "url('https://c1.staticflickr.com/5/4201/34432468254_a1cd2a50d8_b.jpg')");
+      break;
+    case "cloudy":
+      ic.set("weather-icon", Skycons.CLOUDY);
+      $(".weather-frame").css("background-image", "url('https://c1.staticflickr.com/5/4279/34432463304_4876583074_b.jpg')");
+      break;
+    case "partly-cloudy-night":
+      ic.set("weather-icon", Skycons.PARTLY_CLOUDY_NIGHT);
+      $(".weather-frame").css("background-image", "url('https://c1.staticflickr.com/5/4243/34432465044_7d94144b93_b.jpg')");
+      break;
+    case "partly-cloudy-day":
+      ic.set("weather-icon", Skycons.PARTLY_CLOUDY_DAY);
+      $(".weather-frame").css("background-image", "url('https://c1.staticflickr.com/5/4230/35235069056_4460ee39ef_b.jpg')");
+      break;
+  }
+}
+
+function dayOfWeek(day){
+  switch (day) {
+    case 0:
+      return "Sunday";
+    case 1:
+      return "Monday";
+    case 2:
+      return "Tuesday";
+    case 3:
+      return "Wenesday";
+    case 4:
+      return "Thursday";
+    case 5:
+      return "Friday";
+    case 6:
+      return "Saturday";
+  }
+}
+
+function month(m){
+  switch (m) {
+    case 0:
+      return "January";
+    case 1:
+      return "Febuary";
+    case 2:
+      return "March";
+    case 3:
+      return "April";
+    case 4:
+      return "May";
+    case 5:
+      return "June";
+    case 6:
+      return "July";
+    case 7:
+      return "August";
+    case 8:
+      return "September";
+    case 9:
+      return "October";
+    case 10:
+      return "November";
+    case 11:
+      return "December";
+  }
+}
+function getDate() {
+  var date = new Date();
+  var dow, dayOfMonth, m, year;
+  dow = dayOfWeek(date.getDay());
+  m = month(date.getMonth());
+  dayOfMonth = date.getDate();
+  year = date.getFullYear();
+  return dow + ", " + m + " " + dayOfMonth + ", " + year;
+}
+</script>
+
+<div id="weather" class="container-fluid">
+<div class="box weather-main-frame text-center"> 
+  <div>
+    <h1>Welcome to JC Nails & Spa</h1>
+    <h3 id="weather-message"></h3>
+  </div>
+  <div class="well text-center weather-frame">
+    <p> <span id="weather-location"></span></p>
+    <p><span id="weather-date"></span></p>
+    <p>
+      <span id="weather-temp"></span>
+      <button id="f" class="btn btn-degree">&#8457</button>
+      <button id="c" class="btn btn-degree">&#8451</button>
+    </p>
+    <canvas id="weather-icon" width="64px" height="64px"></canvas>
+    <p><span id="weather-des">Description: </span></p>
+    <p><a id="darksky-link" href=# target="_blank" style="color:grey"><em>Powered by Dark Sky</em></a></p>
+  </div>
+</div>
