@@ -60,28 +60,28 @@
     var ftemp = parseFloat(temp);
     var date = new Date();
     if (temp > 80) {  //too hot day
-      message = "<strong>Happy " + dayOfWeek(date.getDay()) + "!! Too HOT outsite?</strong> It's a perfect time to get inside, relax, and chill"
+      message = "<h3><strong>Happy " + dayOfWeek(date.getDay()) + "!! Too HOT outsite?</strong></h3><h3> It's a perfect time to get inside, relax, and chill"
         + " with our spa package (Pedi + Mani). We provide air-conditioning to keep you calm,"
         + " and our pedicure product come with mint mask, cooling gel, and cool lotion will take you"
-        + " away from the heat and get you relax to your every muscles";
+        + " away from the heat and get you relax to your every muscles.</h3>";
     } else if (icon === "rain") {  //rainy day
-      message = "<strong>Happy " + dayOfWeek(date.getDay()) + "!! Find nowhere to hang out with friends and family on such a wet day? </strong>"
-        + " Our salon would be a perfect choice to make your day meaningful. Take away you stress and share"
+      message = "<h3><strong>Happy " + dayOfWeek(date.getDay()) + "!! Find nowhere to hang out with friends and family on such a wet day?</strong></h3>"
+        + "<h3> Our salon would be a perfect choice to make your day meaningful. Take away you stress and share"
         + " your day with your loves one while getting a warm pedicure and relaxing massage."
-        + " We will help you forget about your stressful day and just enjoy your garthering time.";
+        + " We will help you forget about your stressful day and just enjoy your garthering time.</h3>";
     } else if (icon === "cloudy" && temp > 50) { //cloudy day
-      message = "<strong>Happy " + dayOfWeek(date.getDay()) + "!! Can't find something to boost your mood up?</strong>"
-        + " Come to our place, relax and become beautiful afterward.";
+      message = "<h3><strong>Happy " + dayOfWeek(date.getDay()) + "!! Can't find something to boost your mood up?</strong></h3>"
+        + "<h3>Come to our place, relax and become beautiful afterward.</h3>";
     } else if (icon = "clear-day" && temp > 60) { //beautiful day
-      message = "<strong>Happy " + dayOfWeek(date.getDay()) + "!! Hello beautiful day!!</strong> It's even more perfect to treat yourself on such"
-        + " a beautiful day. You deserve to be beautiful too!";
+      message = "<h3><strong>Happy " + dayOfWeek(date.getDay()) + "!! Hello beautiful day!!</strong></h3><h3> It's even more perfect to treat yourself on such"
+        + " a beautiful day. You deserve to be beautiful too!</h3>";
     } else if (temp < 50) {  //cold day
-      message = "<strong>Happy " + dayOfWeek(date.getDay()) + "!! Can't stand the cold?</strong> Soaking your feet in a warm tank of water is all you"
+      message = "<h3><strong>Happy " + dayOfWeek(date.getDay()) + "!! Can't stand the cold?</strong></h3><h3> Soaking your feet in a warm tank of water is all you"
         + " need for this cold weather. Warm up your muscles with hot lotion, hot stones massge, and wrap up "
-        + "in hot towel. Then finally take a long deep relax in hot parafin wax.";
+        + "in hot towel. Then finally take a long deep relax in hot parafin wax.</h3>";
     } else {    //defaul message
-      message = "<strong>Happy " + dayOfWeek(date.getDay()) + "!! Don't feel it's a special day?</strong> Make yourself special! Come and explore our salon and services."
-        + "We surely make you feel special at the time you walk out our door.";
+      message = "<h3><strong>Happy " + dayOfWeek(date.getDay()) + "!! Don't feel it's a special day?</strong></h3><h3> Make yourself special! Come and explore our salon and services."
+        + "We surely make you feel special at the time you walk out our door.</h3>";
     }
     return message;
   }
@@ -195,7 +195,7 @@
   <div class="box weather-main-frame text-center">
     <div>
       <h1>Welcome to JC Nails & Spa</h1>
-      <h3 id="weather-message"></h3>
+      <div id="weather-message"></div>
     </div>
     <div class="well text-center weather-frame">
       <p> <span id="weather-location"></span></p>
@@ -205,7 +205,7 @@
         <button id="f" class="btn btn-degree">&#8457</button>
         <button id="c" class="btn btn-degree">&#8451</button>
       </p>
-      <canvas id="weather-icon" width="64px" height="64px"></canvas>
+      <canvas id="weather-icon" width="100px" height="100px"></canvas>
       <p><span id="weather-des">Description: </span></p>
       <p><a id="darksky-link" href=# target="_blank" style="color:grey"><em>Powered by Dark Sky</em></a></p>
     </div>
